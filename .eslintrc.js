@@ -74,7 +74,7 @@ module.exports = {
                 // function fn() {
                 //     return "Hello World";
                 // }
-                "@typescript-eslint/explicit-function-return-type": "warn",
+                "@typescript-eslint/explicit-function-return-type": "off",
                 "@typescript-eslint/explicit-module-boundary-types": "off",
 
                 // interface Iinterface {
