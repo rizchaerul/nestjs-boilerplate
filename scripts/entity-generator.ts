@@ -10,7 +10,8 @@ const postgresqlOptions = {
 
     driverOptions: {
         connection: {
-            // https://stackoverflow.com/questions/61097695/self-signed-certificate-error-during-query-the-heroku-hosted-postgres-database
+            // For heroku db.
+            // Reference: https://stackoverflow.com/questions/61097695/self-signed-certificate-error-during-query-the-heroku-hosted-postgres-database
             ssl: { rejectUnauthorized: false }
         }
     },

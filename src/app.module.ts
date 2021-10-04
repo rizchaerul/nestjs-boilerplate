@@ -7,6 +7,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { AuthController } from "./controllers/AuthController";
 import { CatsController } from "./controllers/CatsController";
+import { BasicAuthService } from "./services/auth/BasicAuthService";
 import { JwtAuthService } from "./services/auth/JwtAuthService";
 import { LocalAuthService } from "./services/auth/LocalAuthService";
 import { ParseStringPipe } from "./services/pipes/ParseStringPipe";
@@ -37,7 +38,8 @@ import { ParseStringPipe } from "./services/pipes/ParseStringPipe";
 
             driverOptions: {
                 connection: {
-                    // https://stackoverflow.com/questions/61097695/self-signed-certificate-error-during-query-the-heroku-hosted-postgres-database
+                    // For heroku db.
+                    // Reference: https://stackoverflow.com/questions/61097695/self-signed-certificate-error-during-query-the-heroku-hosted-postgres-database
                     ssl: { rejectUnauthorized: false }
                 }
             }
@@ -56,10 +58,11 @@ import { ParseStringPipe } from "./services/pipes/ParseStringPipe";
         CatsController
     ],
     providers: [
-        AppService,
-        ParseStringPipe,
         LocalAuthService,
-        JwtAuthService
+        BasicAuthService,
+        JwtAuthService,
+        AppService,
+        ParseStringPipe
     ]
 })
 export class AppModule { }
