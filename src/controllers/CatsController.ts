@@ -10,9 +10,13 @@ export class CatsController {
     @Get()
     // Example: localhost:3000/api/cats?q=pus
     public async getCats(@Query("q", new DefaultValuePipe(""), ParseStringPipe) query: string) {
-        // normalize search query
+        // Normalize search query
         query = query.trim().toLowerCase();
 
+
+        // More example at:
+        // 1. https://mikro-orm.io/docs/entity-manager
+        // 2. https://github.com/mikro-orm/nestjs-realworld-example-app
         const res = await this.db.find(Cat, {
             name: {
                 $like: `%${query}%`
