@@ -4,6 +4,7 @@ An opinionated [NestJS](https://github.com/nestjs/nest) framework boilerplate. I
 
 - Support for PostgreSQL with MikroORM.
 - Out of the box Bearer and Basic authentication.
+- OpenAPI
 - CRUD example.
 
 ## Installation
