@@ -4,7 +4,6 @@ An opinionated [NestJS](https://github.com/nestjs/nest) framework boilerplate. I
 
 - Support for PostgreSQL with MikroORM.
 - Out of the box Bearer and Basic authentication.
-- OpenAPI
 - CRUD example.
 
 ## Installation
@@ -15,7 +14,7 @@ $ pnpm install
 
 ## How to use
 
-- Install all the dependency.
+- Install all the dependencies.
 - Run the SQL script in the ``scripts/migrations`` folder.
 - Copy ``.env.example`` file and rename it to ``.env``. You must fill all the variable in the ``.env`` file except for ``DB_PATH``.
 - If you want to change the database, Run ``npm run db:scaffold`` to create new entities.
