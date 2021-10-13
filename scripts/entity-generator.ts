@@ -1,26 +1,21 @@
-import { MikroORM } from "@mikro-orm/core";
+import { Connection, IDatabaseDriver, MikroORM, Options } from "@mikro-orm/core";
 import { config } from "dotenv";
+import { DriverOptionHelper } from "../src/helpers/DriverOptionHelper";
 
 config();
 
-const postgresqlOptions = {
+const postgresqlOptions: Options<IDatabaseDriver<Connection>> = {
     discovery: {
         warnWhenNoEntities: false
     },
 
-    driverOptions: {
-        connection: {
-            // For heroku db.
-            // Reference: https://stackoverflow.com/questions/61097695/self-signed-certificate-error-during-query-the-heroku-hosted-postgres-database
-            ssl: { rejectUnauthorized: false }
-        }
-    },
+    driverOptions: DriverOptionHelper.getDriverOptions(process.env["OPTIONAL_USE_HEROKU"]),
 
+    type: "postgresql",
     host: process.env["DB_HOST"],
-    port: process.env["DB_PORT"],
+    port: parseInt(process.env["DB_PORT"] ?? "5432"),
     user: process.env["DB_USER"],
     password: process.env["DB_PASSWORD"],
-    type: "postgresql",
     dbName: process.env["DB_NAME"]
 };
 

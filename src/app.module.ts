@@ -7,6 +7,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { AuthController } from "./controllers/AuthController";
 import { CatsController } from "./controllers/CatsController";
+import { DriverOptionHelper } from "./helpers/DriverOptionHelper";
 import { BasicAuthService } from "./services/auth/BasicAuthService";
 import { JwtAuthService } from "./services/auth/JwtAuthService";
 import { LocalAuthService } from "./services/auth/LocalAuthService";
@@ -36,13 +37,7 @@ import { ParseStringPipe } from "./services/pipes/ParseStringPipe";
             password: process.env["DB_PASSWORD"],
             dbName: process.env["DB_NAME"],
 
-            driverOptions: {
-                connection: {
-                    // For heroku db.
-                    // Reference: https://stackoverflow.com/questions/61097695/self-signed-certificate-error-during-query-the-heroku-hosted-postgres-database
-                    ssl: { rejectUnauthorized: false }
-                }
-            }
+            driverOptions: DriverOptionHelper.getDriverOptions(process.env["OPTIONAL_USE_HEROKU"])
         }),
 
         PassportModule,
