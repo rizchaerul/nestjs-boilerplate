@@ -11,7 +11,6 @@ export class ParseStringOptionalPipe extends ParseStringPipe {
         if (value === null || typeof value === "undefined") {
             return null;
         }
-        console.log(typeof value);
 
         return await super.transform(value);
     }

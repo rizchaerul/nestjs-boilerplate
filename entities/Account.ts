@@ -10,9 +10,6 @@ export class Account {
   fullName!: string;
 
   @Property({ columnType: 'text' })
-  username!: string;
-
-  @Property({ columnType: 'text' })
   email!: string;
 
   @Property({ columnType: 'text' })
